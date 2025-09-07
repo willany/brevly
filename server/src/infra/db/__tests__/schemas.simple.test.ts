@@ -20,7 +20,7 @@ describe('Database Schema - Simple Tests', () => {
   it('should handle URL validation', () => {
     const validUrls = [
       'https://example.com',
-      'http://localhost:3000',
+      'http://localhost:3333',
       'https://example.com',
     ];
 

@@ -35,7 +35,7 @@ await api.deleteLink('link-id');
 
 The API client is configured with:
 
-- Base URL from environment variable `VITE_BACKEND_URL` (defaults to `http://localhost:3000`)
+- Base URL from environment variable `VITE_BACKEND_URL` (defaults to `http://localhost:3333`)
 - 10-second timeout
 - JSON content type headers
 - Request/response interceptors for logging and error handling
@@ -52,4 +52,4 @@ All API methods throw errors that can be caught and handled:
 
 ## Environment Variables
 
-- `VITE_BACKEND_URL`: Backend API base URL (default: `http://localhost:3000`)
+- `VITE_BACKEND_URL`: Backend API base URL (default: `http://localhost:3333`)

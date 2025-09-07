@@ -101,7 +101,7 @@ describe('Link Routes', () => {
         values: vi.fn().mockReturnValue({
           returning: vi.fn().mockResolvedValue([{
             id: 'test-id',
-            originalUrl: 'http://localhost:3000',
+            originalUrl: 'http://localhost:3333',
             shortUrl: 'test123',
             accessCount: 0,
             createdAt: new Date('2024-01-01T00:00:00Z'),
@@ -113,7 +113,7 @@ describe('Link Routes', () => {
         method: 'POST',
         url: '/links',
           payload: {
-            originalUrl: 'http://localhost:3000',
+            originalUrl: 'http://localhost:3333',
             customShortUrl: 'test123',
         },
       });

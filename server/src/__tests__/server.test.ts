@@ -24,7 +24,7 @@ describe('Server', () => {
         method: 'OPTIONS',
         url: '/links',
         headers: {
-            'Origin': 'http://localhost:3000',
+            'Origin': 'http://localhost:3333',
           'Access-Control-Request-Method': 'POST',
           'Access-Control-Request-Headers': 'Content-Type',
         },

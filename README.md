@@ -17,9 +17,9 @@ docker-compose up -d
 ```
 
 The API will be available at:
-- **API**: http://localhost:3000
-- **Documentation**: http://localhost:3000/docs
-- **Health Check**: http://localhost:3000/health
+- **API**: http://localhost:3333
+- **Documentation**: http://localhost:3333/docs
+- **Health Check**: http://localhost:3333/health
 
 ### 2. Start the Frontend
 
@@ -163,16 +163,16 @@ npm run dev
 
 ### Services
 
-- **Backend API**: http://localhost:3000
+- **Backend API**: http://localhost:3333
 - **Frontend App**: http://localhost:5173
 - **PostgreSQL**: Internal database
-- **API Docs**: http://localhost:3000/docs
+- **API Docs**: http://localhost:3333/docs
 
 ## 📖 Documentation
 
 - **Frontend**: [web/README.md](./web/README.md)
 - **Backend**: [server/README.md](./server/README.md)
-- **API Docs**: http://localhost:3000/docs (when running)
+- **API Docs**: http://localhost:3333/docs (when running)
 
 ## 🧪 Testing
 
@@ -198,7 +198,7 @@ POSTGRES_DB=brevly
 
 #### Frontend (.env in web/)
 ```env
-VITE_BACKEND_URL=http://localhost:3000
+VITE_BACKEND_URL=http://localhost:3333
 VITE_FRONTEND_URL=http://localhost:5173
 ```
 
@@ -254,8 +254,8 @@ VITE_FRONTEND_URL=http://localhost:5173
 
 4. **Access the application**:
    - Frontend: http://localhost:5173
-   - Backend API: http://localhost:3000
-   - API Documentation: http://localhost:3000/docs
+   - Backend API: http://localhost:3333
+   - API Documentation: http://localhost:3333/docs
 
 ## 🤝 Contributing
 
@@ -272,7 +272,7 @@ MIT License - see LICENSE file for details
 ## 🆘 Support
 
 For support and questions:
-- Check the API documentation at http://localhost:3000/docs
+- Check the API documentation at http://localhost:3333/docs
 - Review the individual README files in `web/` and `server/` directories
 - Open an issue on GitHub
 

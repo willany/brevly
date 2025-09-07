@@ -74,7 +74,7 @@ A modern, responsive React application for creating and managing shortened URLs 
 
    ```bash
    cp .env.example .env
-   # VITE_BACKEND_URL should be http://localhost:3000 for Docker Compose setup
+   # VITE_BACKEND_URL should be http://localhost:3333 for Docker Compose setup
    ```
 
 3. **Start the backend server** (in server directory):
@@ -98,7 +98,7 @@ Create a `.env` file in the web directory:
 VITE_FRONTEND_URL=http://localhost:5173
 
 # Backend API URL (Docker Compose maps port 3000 to internal 3333)
-VITE_BACKEND_URL=http://localhost:3000
+VITE_BACKEND_URL=http://localhost:3333
 ```
 
 ## 📦 Installation
@@ -121,7 +121,7 @@ VITE_BACKEND_URL=http://localhost:3000
 
    ```bash
    cp .env.example .env
-   # VITE_BACKEND_URL should be http://localhost:3000 for Docker Compose setup
+   # VITE_BACKEND_URL should be http://localhost:3333 for Docker Compose setup
    ```
 
 3. **Start development server**:
