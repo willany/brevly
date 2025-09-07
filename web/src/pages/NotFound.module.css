@@ -1,0 +1,33 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e8ebf0;
+  padding: var(--spacing-lg);
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: var(--spacing-2xl);
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+}
+
+.title {
+  margin-bottom: var(--spacing-md);
+  color: var(--gray-600);
+}
+
+.description {
+  margin-bottom: var(--spacing-lg);
+  color: var(--gray-500);
+}
+
+.link {
+  color: var(--blue-base);
+  text-decoration: none;
+  cursor: pointer;
+}

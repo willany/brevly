@@ -1,0 +1,1 @@
+ALTER TABLE "links" ALTER COLUMN "id" SET DATA TYPE text;

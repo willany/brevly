@@ -1,0 +1,396 @@
+openapi: 3.0.3
+info:
+  title: URL Shortener API
+  description: A comprehensive API for creating and managing shortened URLs with analytics and export capabilities.
+  version: 1.0.0
+  contact:
+    name: URL Shortener API Support
+    email: support@urlshortener.com
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: http://localhost:3333
+    description: Development server
+  - url: https://api.urlshortener.com
+    description: Production server
+
+tags:
+  - name: Links
+    description: URL shortening and management endpoints
+  - name: Analytics
+    description: URL access tracking and statistics
+  - name: Export
+    description: Data export functionality
+
+paths:
+  /links:
+    post:
+      summary: Create Short URL
+      description: Create a new shortened URL
+      tags:
+        - Links
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - originalUrl
+              properties:
+                originalUrl:
+                  type: string
+                  format: uri
+                  description: The original URL to be shortened
+                  example: https://www.example.com/very-long-url-that-needs-shortening
+      responses:
+        '201':
+          description: URL successfully shortened
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  originalUrl:
+                    type: string
+                    example: https://www.example.com/very-long-url-that-needs-shortening
+                  shortUrl:
+                    type: string
+                    example: a1b2c3d4
+                  accessCount:
+                    type: integer
+                    example: 0
+                  createdAt:
+                    type: string
+                    format: date-time
+                    example: '2024-01-15T10:30:00Z'
+        '400':
+          description: Bad request - Invalid URL or missing required field
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: originalUrl is required
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Internal server error
+    get:
+      summary: Get All Links
+      description: Retrieve all shortened URLs with their statistics
+      tags:
+        - Analytics
+      responses:
+        '200':
+          description: List of all shortened URLs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    originalUrl:
+                      type: string
+                      example: https://www.example.com/very-long-url-that-needs-shortening
+                    shortUrl:
+                      type: string
+                      example: a1b2c3d4
+                    accessCount:
+                      type: integer
+                      example: 42
+                    createdAt:
+                      type: string
+                      format: date-time
+                      example: '2024-01-15T10:30:00Z'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Internal server error
+
+  /{shortUrl}:
+    get:
+      summary: Redirect to Original URL
+      description: Redirect to the original URL using the short URL
+      tags:
+        - Links
+      parameters:
+        - name: shortUrl
+          in: path
+          required: true
+          description: The short URL identifier
+          schema:
+            type: string
+          example: a1b2c3d4
+      responses:
+        '302':
+          description: Redirect to original URL
+        '404':
+          description: Short URL not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Short URL not found
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Internal server error
+
+  /links/{id}:
+    delete:
+      summary: Delete Short URL
+      description: Delete a shortened URL by its ID
+      tags:
+        - Links
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the link to delete
+          schema:
+            type: string
+          example: '1'
+      responses:
+        '204':
+          description: Link successfully deleted
+        '400':
+          description: Bad request - Invalid link ID
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Invalid link ID
+        '404':
+          description: Link not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Link not found
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Internal server error
+
+  /links/export:
+    post:
+      summary: Export Links to CSV
+      description: Export all links data to CSV format
+      tags:
+        - Export
+      responses:
+        '200':
+          description: CSV data successfully generated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  csvData:
+                    type: string
+                    example: id,original_url,short_url,access_count,created_at\n1,https://example.com,abc123,5,2024-01-15T10:30:00Z
+                  filename:
+                    type: string
+                    example: links_export_20240115.csv
+                  recordCount:
+                    type: integer
+                    example: 10
+        '404':
+          description: No links found to export
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: No links found to export
+        '500':
+          description: Failed to export CSV
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Failed to export CSV
+
+  /links/{shortUrl}/access:
+    post:
+      summary: Track Link Access
+      description: Increment access count for a short URL without redirecting
+      tags:
+        - Analytics
+      parameters:
+        - name: shortUrl
+          in: path
+          required: true
+          description: The short URL identifier
+          schema:
+            type: string
+          example: a1b2c3d4
+      responses:
+        '200':
+          description: Access count incremented successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Access count incremented
+                  originalUrl:
+                    type: string
+                    example: https://www.example.com/very-long-url-that-needs-shortening
+        '404':
+          description: Short URL not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Short URL not found
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Internal server error
+
+components:
+  schemas:
+    Link:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the link
+          example: 1
+        originalUrl:
+          type: string
+          format: uri
+          description: The original URL that was shortened
+          example: https://www.example.com/very-long-url-that-needs-shortening
+        shortUrl:
+          type: string
+          description: The generated short URL identifier
+          example: a1b2c3d4
+        accessCount:
+          type: integer
+          description: Number of times the short URL has been accessed
+          example: 42
+        createdAt:
+          type: string
+          format: date-time
+          description: When the link was created
+          example: '2024-01-15T10:30:00Z'
+      required:
+        - id
+        - originalUrl
+        - shortUrl
+        - accessCount
+        - createdAt
+
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+          example: Short URL not found
+      required:
+        - error
+
+    CreateLinkRequest:
+      type: object
+      properties:
+        originalUrl:
+          type: string
+          format: uri
+          description: The original URL to be shortened
+          example: https://www.example.com/very-long-url-that-needs-shortening
+      required:
+        - originalUrl
+
+    ExportResponse:
+      type: object
+      properties:
+        csvData:
+          type: string
+          description: The CSV data as a string
+          example: id,original_url,short_url,access_count,created_at\n1,https://example.com,abc123,5,2024-01-15T10:30:00Z
+        filename:
+          type: string
+          description: Suggested filename for the export
+          example: links_export_20240115.csv
+        recordCount:
+          type: integer
+          description: Number of records exported
+          example: 10
+      required:
+        - csvData
+        - filename
+        - recordCount
+
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: API key for authentication (if implemented)
+
+security:
+  - apiKey: [] 

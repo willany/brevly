@@ -1,0 +1,36 @@
+.card {
+  width: 380px;
+  min-height: 340px;
+  background-color: var(--white);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-sm);
+  align-self: flex-start;
+
+  @media (max-width: 998px) {
+    width: 100%;
+  }
+}
+
+.title {
+  font-size: var(--text-lg-size);
+  line-height: var(--text-lg-line-height);
+  font-weight: var(--text-lg-weight);
+  margin-bottom: var(--spacing-lg);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.submitButton {
+  width: 100%;
+}
+
+.errorMessage {
+  color: var(--danger);
+  font-size: var(--text-sm-size);
+  margin-bottom: var(--spacing-md);
+}

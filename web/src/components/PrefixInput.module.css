@@ -1,0 +1,76 @@
+.formGroup {
+  margin-bottom: var(--spacing-md);
+}
+
+.formLabel {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-size: var(--text-xs-size);
+  font-weight: var(--text-xs-weight);
+  color: var(--gray-500);
+  text-transform: uppercase;
+}
+
+.prefixContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 48px;
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius-md);
+  background-color: var(--white);
+  transition: border-color 0.2s ease;
+}
+
+.prefixContainer:focus-within {
+  outline: none;
+  border-color: var(--blue-base);
+}
+
+.prefixContainerError {
+  border-color: var(--danger);
+}
+
+.prefix {
+  padding: var(--spacing-sm) 0 var(--spacing-sm) var(--spacing-md);
+  font-family: var(--font-family);
+  font-size: var(--text-sm-size);
+  color: var(--gray-400);
+  background-color: var(--gray-50);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.prefixInput {
+  flex: 1;
+  height: 100%;
+  padding: var(--spacing-sm) var(--spacing-md) var(--spacing-sm) 0;
+  border: none;
+  outline: none;
+  font-family: var(--font-family);
+  font-size: var(--text-sm-size);
+  background-color: transparent;
+  color: var(--gray-900);
+}
+
+.prefixInput::placeholder {
+  color: var(--gray-400);
+}
+
+.formError {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: var(--danger);
+  font-size: var(--text-xs-size);
+  margin-top: var(--spacing-xs);
+}
+
+.errorIcon {
+  font-size: 16px;
+}
+
+.errorMessage {
+  font-size: var(--text-sm-size);
+  color: var(--gray-500);
+}

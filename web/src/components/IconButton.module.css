@@ -1,0 +1,86 @@
+.iconBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--spacing-xl);
+  background: var(--gray-200);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: var(--spacing-sm);
+  box-sizing: border-box;
+}
+
+.iconBtn:hover {
+  background-color: var(--gray-100);
+  border: 1px solid var(--blue-base);
+  border-radius: 5px;
+  color: var(--gray-500);
+}
+
+.iconBtnDisabled {
+  background-color: var(--gray-200);
+  opacity: 50%;
+  font-weight: var(--text-sm-weight);
+  border: 1px solid transparent;
+}
+
+.iconBtnDisabled:hover {
+  background-color: var(--gray-200);
+  opacity: 50%;
+  font-weight: var(--text-sm-weight);
+  cursor: not-allowed;
+  border: 1px solid transparent;
+}
+
+.iconBtnIcon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray-500);
+  font-size: 16px;
+}
+
+.iconBtnIconImage {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.iconBtnIconImageDisabled {
+  opacity: 50%;
+}
+
+.iconBtn:hover .iconBtnIcon {
+  color: var(--blue-base);
+}
+
+.iconBtnText {
+  margin-left: var(--spacing-xs);
+  font-size: var(--text-sm-size);
+  color: var(--gray-500);
+  font-weight: var(--text-sm-weight-semibold);
+}
+
+.iconBtnTextDisabled {
+  opacity: 50%;
+}
+
+.iconBtnSm {
+  padding: var(--spacing-sm);
+}
+
+.iconBtnSm .iconBtnIcon {
+  font-size: 14px;
+}
+
+.iconBtnLg {
+  padding: var(--spacing-sm);
+}
+
+.iconBtnLg .iconBtnIcon {
+  font-size: 18px;
+}

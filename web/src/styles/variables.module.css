@@ -1,0 +1,53 @@
+:root {
+  --blue-base: #2c46b1;
+  --blue-dark: #2c4091;
+
+  --white: #ffffff;
+  --gray-100: #f9f9fb;
+  --gray-200: #e4e6ec;
+  --gray-300: #cdcfd5;
+  --gray-400: #74798b;
+  --gray-500: #4d505c;
+  --gray-600: #1f2025;
+
+  --danger: #b12c4d;
+
+  --font-family: 'Open Sans', sans-serif;
+
+  --text-xl-size: 24px;
+  --text-xl-line-height: 32px;
+  --text-xl-weight: bold;
+
+  --text-lg-size: 18px;
+  --text-lg-line-height: 24px;
+  --text-lg-weight: bold;
+
+  --text-md-size: 14px;
+  --text-md-line-height: 18px;
+  --text-md-weight: 600;
+
+  --text-sm-size: 12px;
+  --text-sm-line-height: 16px;
+  --text-sm-weight: 400;
+  --text-sm-weight-semibold: 600;
+
+  --text-xs-size: 10px;
+  --text-xs-line-height: 14px;
+  --text-xs-weight: 400;
+  --text-xs-case: uppercase;
+
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}

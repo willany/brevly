@@ -1,0 +1,84 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-family);
+  font-size: var(--text-sm-size);
+  font-weight: var(--text-sm-weight-semibold);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  gap: var(--spacing-xs);
+}
+
+.btnPrimary {
+  background-color: var(--blue-base);
+  color: var(--white);
+}
+
+.btnPrimary:hover:not(:disabled) {
+  background-color: var(--blue-dark);
+}
+
+.btnPrimary:disabled {
+  background-color: var(--blue-base);
+  color: var(--white);
+  cursor: not-allowed;
+}
+
+.btnSecondary {
+  background-color: var(--white);
+  color: var(--gray-600);
+  border: 1px solid var(--gray-300);
+}
+
+.btnSecondary:hover:not(:disabled) {
+  border-color: var(--gray-400);
+  background-color: var(--gray-100);
+}
+
+.btnSecondary:disabled {
+  background-color: var(--white);
+  color: var(--gray-300);
+  border-color: var(--gray-200);
+  cursor: not-allowed;
+}
+
+.btnLoading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.btnDisabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.btnSm {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--text-xs-size);
+}
+
+.btnLg {
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: var(--text-md-size);
+}
+
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--gray-300);
+  border-radius: 50%;
+  border-top-color: var(--blue-base);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
